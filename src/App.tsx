@@ -5,9 +5,10 @@ function App() {
   return (
     <>
       <Nav />
-      <main>
+      <main className="app-main">
         <Outlet />
       </main>
+      
     </>
   );
 }

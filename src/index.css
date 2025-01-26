@@ -23,19 +23,13 @@ a:hover {
 }
 
 body {
+  background-color: #202c88; /* Fallback for gradient */
   background: linear-gradient(
     180deg,
     rgb(32, 44, 136) 0%,
     rgba(9, 9, 121, 1) 15%,
     rgba(0, 2, 18, 1) 100%
   );
-  background-size: cover;
-  background-repeat: no-repeat no-repeat;
-  background-position: center center;
-  margin: 0;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
 }
 
 h1 {

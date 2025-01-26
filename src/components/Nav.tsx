@@ -10,7 +10,7 @@
   
   const Nav = () => {
     return (
-      <nav style={styles.navbar}>
+      <nav aria-label="Main navigation" style={styles.navbar}>
         <ul style={styles.navList}>
           <li style={styles.navItem}>
             <Link to="/" style={styles.link}>Candidate Search</Link>

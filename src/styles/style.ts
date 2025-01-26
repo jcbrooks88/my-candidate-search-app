@@ -25,6 +25,7 @@ const styles = {
     actions: {
       marginTop: '16px',
     },
+    
     button: {
       margin: '5px',
       padding: '10px 15px',
@@ -33,7 +34,12 @@ const styles = {
       border: 'none',
       borderRadius: '4px',
       cursor: 'pointer',
+      transition: 'background-color 0.3s ease',
+      '&:hover': {
+        backgroundColor: '#0056b3',
+      },
     },
+    
     error: {
       color: 'red',
     },

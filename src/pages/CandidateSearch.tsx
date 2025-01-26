@@ -56,7 +56,8 @@ const CandidateSearch = () => {
           </div>
         </div>
       )}
-      {!candidate && !isLoading && !error && <p>No more candidates to review.</p>}
+      {!candidate && !isLoading && !error && <p>No more candidates available for review. Try refreshing the page.</p>
+      }
     </div>
   );
 };
