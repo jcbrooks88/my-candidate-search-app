@@ -1,40 +1,32 @@
-const searchGithub = async () => {
+import { Outlet } from 'react-router-dom';
+import Nav from '../components/Nav';
+
+function App() {
+  return (
+    <>
+      <Nav />
+      <main>
+        <Outlet />
+      </main>
+    </>
+  );
+}
+
+export default App;
+
+export const searchGithub = async () => {
+  const url = 'https://randomuser.me/api/?results=5';  // Fetch 5 random users
+
   try {
-    const start = Math.floor(Math.random() * 100000000) + 1;
-    const response = await fetch(
-      `https://api.github.com/users?since=${start}`,
-      {
-        headers: {
-          Authorization: `Bearer ${import.meta.env.VITE_GITHUB_TOKEN}`,
-        },
-      }
-    );
+    const response = await fetch(url);
     if (!response.ok) {
-      throw new Error(`API Error: ${response.statusText}`);
+      throw new Error('Failed to fetch data');
     }
-    return await response.json();
+    const data = await response.json();
+    return data.results;  // Access the 'results' array from the response
   } catch (err) {
-    console.error("Error in searchGithub:", err);
-    return []; // Return empty array as fallback
+    throw new Error('Failed to fetch candidate data. Please try again.');
   }
 };
 
-const searchGithubUser = async (username: string) => {
-  try {
-    const response = await fetch(`https://api.github.com/users/${username}`, {
-      headers: {
-        Authorization: `Bearer ${import.meta.env.VITE_GITHUB_TOKEN}`,
-      },
-    });
-    if (!response.ok) {
-      throw new Error(`API Error: ${response.statusText}`);
-    }
-    return await response.json();
-  } catch (err) {
-    console.error("Error in searchGithubUser:", err);
-    return {}; // Return empty object as fallback
-  }
-};
-
-export { searchGithub, searchGithubUser };
 

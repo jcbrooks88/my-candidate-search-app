@@ -1,110 +1,42 @@
-// SavedCandidates.tsx
-import React, { useEffect, useState } from "react";
+import React from 'react';
+import Candidate from '../interfaces/Candidate.interface';
 
-interface Candidate {
-  id: number;
-  name: string;
-  avatar_url: string;
-  html_url: string;
+interface SavedCandidatesProps {
+  candidate?: Candidate; // Candidate can now be undefined
+  fetchCandidate: () => void;
 }
 
-const SavedCandidates: React.FC = () => {
-  const [savedCandidates, setSavedCandidates] = useState<Candidate[]>([]);
+const SavedCandidates: React.FC<SavedCandidatesProps> = ({ candidate, fetchCandidate }) => {
+  if (!candidate) {
+    return <p>No saved candidate available.</p>;
+  }
 
-  useEffect(() => {
-    // Retrieve saved candidates from localStorage when the component mounts
-    const savedData = localStorage.getItem("savedCandidates");
-    if (savedData) {
-      try {
-        const parsedData = JSON.parse(savedData);
-        setSavedCandidates(parsedData);
-      } catch (error) {
-        console.error("Failed to parse saved candidates from localStorage:", error);
-      }
-    }
-  }, []);
-
-  const handleRemove = (id: number) => {
-    // Remove a candidate by their ID
-    const updatedCandidates = savedCandidates.filter(
-      (candidate) => candidate.id !== id
-    );
-    setSavedCandidates(updatedCandidates);
-    localStorage.setItem("savedCandidates", JSON.stringify(updatedCandidates));
-    alert("Candidate removed from saved list.");
-  };
+  const {
+    name,
+    username,
+    location,
+    email,
+    skills = [],
+  } = candidate;
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Saved Candidates</h1>
-      {savedCandidates.length === 0 ? (
-        <p>No saved candidates. Try adding some candidates from the search page!</p>
-      ) : (
-        <ul style={{ listStyleType: "none", padding: 0 }}>
-          {savedCandidates.map((candidate) => (
-            <li
-              key={candidate.id}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                marginBottom: "15px",
-                border: "1px solid #ccc",
-                borderRadius: "8px",
-                padding: "10px",
-                boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
-              }}
-            >
-              <img
-                src={candidate.avatar_url}
-                alt={`${candidate.name}'s avatar`}
-                style={{
-                  width: "50px",
-                  height: "50px",
-                  borderRadius: "50%",
-                  marginRight: "15px",
-                }}
-              />
-              <div style={{ flexGrow: 1 }}>
-                <a
-                  href={candidate.html_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    fontSize: "16px",
-                    fontWeight: "bold",
-                    color: "#007bff",
-                    textDecoration: "none",
-                  }}
-                >
-                  {candidate.name}
-                </a>
-              </div>
-              <button
-                onClick={() => handleRemove(candidate.id)}
-                style={{
-                  backgroundColor: "#d9534f",
-                  color: "white",
-                  border: "none",
-                  borderRadius: "4px",
-                  padding: "5px 10px",
-                  cursor: "pointer",
-                  transition: "background-color 0.3s ease",
-                }}
-                onMouseEnter={(e) =>
-                  ((e.target as HTMLButtonElement).style.backgroundColor =
-                    "#c9302c")
-                }
-                onMouseLeave={(e) =>
-                  ((e.target as HTMLButtonElement).style.backgroundColor =
-                    "#d9534f")
-                }
-              >
-                Remove
-              </button>
-            </li>
-          ))}
-        </ul>
-      )}
+    <div>
+      <h2>Saved Candidate</h2>
+      <div>
+        <h3>
+          {name?.title} {name?.first} {name?.last}
+        </h3>
+        <p>Username: {username || 'Unknown'}</p>
+        <p>
+          Location:{' '}
+          {location
+            ? `${location.city}, ${location.state}`
+            : 'Unknown'}
+        </p>
+        <p>Email: {email || 'Unknown'}</p>
+        <p>Skills: {skills.length > 0 ? skills.join(', ') : 'No skills listed'}</p>
+        <button onClick={fetchCandidate}>Fetch New Candidate</button>
+      </div>
     </div>
   );
 };

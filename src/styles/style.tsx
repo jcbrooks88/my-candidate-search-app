@@ -43,6 +43,26 @@ const styles = {
     error: {
       color: 'red',
     },
+
+    navbar: {
+      display: "flex",
+      justifyContent: "center",
+      padding: "10px",
+      backgroundColor: "#f4f4f4",
+      borderBottom: "1px solid #ccc",
+    },
+    
+    navList: {
+      listStyleType: "none",
+      display: "flex",
+      gap: "20px",
+      margin: 0,
+      padding: 0,
+    },
+
+    navItem: {
+      fontSize: "18px",
+    },
   };
   
   export default styles;
