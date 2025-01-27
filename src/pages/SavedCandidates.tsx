@@ -1,45 +1,30 @@
-import React from 'react';
 import Candidate from '../interfaces/Candidate.interface';
 
+
 interface SavedCandidatesProps {
-  candidate?: Candidate; // Candidate can now be undefined
-  fetchCandidate: () => void;
+  candidate: Candidate;
+  fetchCandidate: () => Promise<void>;
 }
 
 const SavedCandidates: React.FC<SavedCandidatesProps> = ({ candidate, fetchCandidate }) => {
-  if (!candidate) {
-    return <p>No saved candidate available.</p>;
-  }
-
-  const {
-    name,
-    username,
-    location,
-    email,
-    skills = [],
-  } = candidate;
+  // Example function to trigger fetchCandidate
+  const handleFetchSavedCandidate = () => {
+    fetchCandidate(); // Call the fetchCandidate function
+  };
 
   return (
     <div>
-      <h2>Saved Candidate</h2>
-      <div>
-        <h3>
-          {name?.title} {name?.first} {name?.last}
-        </h3>
-        <p>Username: {username || 'Unknown'}</p>
-        <p>
-          Location:{' '}
-          {location
-            ? `${location.city}, ${location.state}`
-            : 'Unknown'}
-        </p>
-        <p>Email: {email || 'Unknown'}</p>
-        <p>Skills: {skills.length > 0 ? skills.join(', ') : 'No skills listed'}</p>
-        <button onClick={fetchCandidate}>Fetch New Candidate</button>
-      </div>
+      <h3>Saved Candidate</h3>
+      <p>Name: {candidate.name?.first} {candidate.name?.last}</p>
+      {/* Other details */}
+      
+      {/* Button or action to fetch new candidate */}
+      <button onClick={handleFetchSavedCandidate}>Fetch Saved Candidate</button>
     </div>
   );
 };
 
 export default SavedCandidates;
+
+
 

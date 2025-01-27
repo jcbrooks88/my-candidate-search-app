@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { searchGithub } from '../api/API'; // Fetch candidates
 import Candidate from '../interfaces/Candidate.interface';
 import SavedCandidates from './SavedCandidates';
-import '../styles/style.tsx'; // Import the CSS file
+
 
 const CandidateSearch = () => {
   const [candidate, setCandidate] = useState<Candidate | null>(null);
