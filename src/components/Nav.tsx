@@ -11,7 +11,7 @@
   const Nav = () => {
     return (
       <nav aria-label="Main navigation" className="nav">
-        <ul>
+        <ul className="nav-list">
           <li className="nav-item">
             <Link to="/" className="nav-link">
               Candidate Search

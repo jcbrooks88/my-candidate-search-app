@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 
-import App from './App.tsx';
-import CandidateSearch from './pages/CandidateSearch.tsx';
-import SavedCandidatesWrapper from './pages/SavedCandidatesWrapper.tsx'; // Wrapper for passing props
-import ErrorPage from './pages/ErrorPage.tsx';
+import App from './App';
+import CandidateSearch from './pages/CandidateSearch';
+import SavedCandidates from './pages/SavedCandidates'; 
+import ErrorPage from './pages/ErrorPage';
 
-// Create router with the v7_startTransition future flag
+
 const router = createBrowserRouter(
   [
     {
@@ -21,15 +21,15 @@ const router = createBrowserRouter(
           element: <CandidateSearch />,
         },
         {
-          path: '/SavedCandidates',
-          element: <SavedCandidatesWrapper />, // Use wrapper to pass props
+          path: '/SavedCandidates', 
+          element: <SavedCandidates />, 
         },
       ],
     },
   ],
   {
     future: {
-      v7_startTransition: true, // This line can be casted to "any" to bypass TypeScript error
+      v7_startTransition: true, // This line can be cast to "any" to bypass TypeScript error
     } as any, // TypeScript workaround: cast to "any"
   }
 );

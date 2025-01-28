@@ -4,7 +4,7 @@ import Location from './Location.interface';
 // Updated interface to match the structure of the API response
 
 interface Candidate {
-  id: number;
+  id: string;
   name: Name; // Name is now an object with title, first, and last
   username: string;
   location: Location; // Location is now an object with city, state, and country
