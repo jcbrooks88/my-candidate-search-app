@@ -20,7 +20,7 @@ a {
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: #05fb80;
 }
 
 body {
@@ -39,10 +39,17 @@ h1 {
   color: #fff;
 }
 
+h2 {
+  font-size: 2.5em;
+  line-height: 1.1;
+  color: #05fb80;
+  align-items: center;
+}
+
 p {
   font-size: 1em;
   line-height: 1.5;
-  color: #fff;
+  color: #bab8b8;
 }
 
 button {
@@ -57,7 +64,7 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #05fb80;
 }
 button:focus,
 button:focus-visible {
@@ -70,7 +77,7 @@ button:focus-visible {
     background-color: #ffffff;
   }
   a:hover {
-    color: #747bff;
+    color: #05fb80;
   }
   button {
     background-color: #f9f9f9;
@@ -115,7 +122,7 @@ tbody tr:nth-child(odd) {
 }
 
 .nav-link {
-  color: #fff;
+  color: #bab8b8;
   text-decoration: none;
   font-weight: bold;
 }
@@ -139,13 +146,16 @@ tbody tr:nth-child(odd) {
 }
 
 .save-btn {
-  background-color: #4CAF50;
+  background-color: #bab8b8;
   color: white;
+  border-color: #ffffff;
+  
 }
 
 .skip-btn {
-  background-color: #ff0000;
+  background-color: #bab8b8;
   color: white;
+  border-color: #ffffff;
 }
 
 .avatar {
@@ -183,4 +193,10 @@ tbody tr:nth-child(odd) {
 
 .remove-btn:hover {
   background-color: darkred;
+}
+
+.app-buttons {
+  display: flex;
+  gap: 20px;
+  border: 1px solid #080808;
 }

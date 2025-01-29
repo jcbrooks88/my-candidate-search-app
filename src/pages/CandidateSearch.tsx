@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { searchGithub } from '../api/API'; // Fetch candidates
 import Candidate from '../interfaces/Candidate.interface';
 
+
 const CandidateSearch = () => {
   const [candidate, setCandidate] = useState<Candidate | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -48,7 +49,7 @@ const CandidateSearch = () => {
 
   return (
     <div className="container">
-      <h2>Candidate Search</h2>
+      <h2 className="app-buttons">Candidate Search</h2>
       {isLoading && <p>Loading candidate data...</p>}
       {error && <p className="error">{error}</p>}
       {candidate ? (

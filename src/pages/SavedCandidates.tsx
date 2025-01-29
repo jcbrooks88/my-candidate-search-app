@@ -25,7 +25,7 @@ const SavedCandidates = () => {
 
   return (
     <main>
-      <h1>Saved Candidates</h1>
+      <h2 className="app-buttons">Saved Candidates</h2>
       
       {savedCandidates.length === 0 ? (
         <p>No saved candidates.</p>
